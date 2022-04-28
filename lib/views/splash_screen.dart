@@ -1,6 +1,4 @@
-import 'package:ana_uk/views/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../core/const.dart';
 
@@ -14,8 +12,12 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    // Future.delayed(
-    //     const Duration(seconds: 3), () => Get.offAll(HomePage()));
+    Future.delayed(const Duration(seconds: 3), () {
+      setState(() {
+        isLoading = true;
+        print( 'isLoading: $isLoading');
+      });
+    });
 
     super.initState();
   }
@@ -31,13 +33,16 @@ class _SplashScreenState extends State<SplashScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: 40),
-              AnimatedContainer(
-                padding: const EdgeInsets.all(40),
-                height: 200,width: 200,
-                duration: Duration(seconds: 2),
-
-                child: Image.asset("assets/images/logo.png",height: 200,width: 200,fit: BoxFit.fitWidth,),
-                curve: Curves.easeInOut,
+              Container(
+                padding: const EdgeInsets.all(35),
+               // height: 200,
+               // width: 200,
+                child: Image.asset(
+                  "assets/images/logo.png",
+                 // height: 200,
+                 // width: 200,
+                  fit: BoxFit.fitWidth,
+                ),
               ),
               SizedBox(height: 40),
               Row(
@@ -47,8 +52,10 @@ class _SplashScreenState extends State<SplashScreen> {
                     color: Colors.amber,
                   ),
                   SizedBox(width: 20),
-                  Text('Loading', style: TextStyle(color: Colors.amber),),
-
+                  Text(
+                    'Loading',
+                    style: TextStyle(color: Colors.amber),
+                  ),
                 ],
               )
             ],
